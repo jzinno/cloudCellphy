@@ -6,7 +6,7 @@
 #SBATCH --job-name=nextflow
 #SBATCH --mail-type=FAIL,END
 #SBATCH --mail-user=jzinno@nygenome.org
-#SBATCH --output=darkshore-log_%j.out
+#SBATCH --output=cloudCellphy-log_%j.out
 
 
 module load anaconda3
@@ -21,4 +21,6 @@ fi
 
 export NXF_TEMP=$PWD/nxf-scratch
 
-nextflow workflows/distCellphy.nf -with-report report-nextflow-log.html -with-dag flowchart.html -with-timeline timeline.html -resume
+export PATH=$PWD/bin:$PATH
+
+nextflow workflows/cloudCellphy.nf -with-report report-nextflow-log.html -with-dag flowchart.html -with-timeline timeline.html -resume
