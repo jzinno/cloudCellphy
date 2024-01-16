@@ -17,19 +17,14 @@ workflow {
         .toSortedList { a, b -> b[1] <=> a[1] }
         .map { it[0][0] }
         .set { best_tree }
-
-    best_tree.view { "The best tree is: ${it}" }
     joint_vcf
         .combine(best_tree)
         .combine(bootstrap_idx)
         .set { inputs_for_bootstrap }
-
-    // Use the new channel as the input for BootstrapsCellPhy
     BootstrapsCellPhy( inputs_for_bootstrap )
     BootstrapsCellPhy
         .out
         .collectFile( name: 'allBootstraps.txt', newLine: true )
         .set { all_bootstraps }
     SupportCellPhy( best_tree, all_bootstraps)
-
 }
