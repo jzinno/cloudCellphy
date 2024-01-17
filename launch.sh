@@ -11,6 +11,7 @@
 
 module load anaconda3
 module load nextflow/22.10.4
+module load singularity/3.8.6
 
 eval "$(conda shell.bash hook)"
 conda deactivate
@@ -21,6 +22,6 @@ fi
 
 export NXF_TEMP=$PWD/nxf-scratch
 
-export PATH=$PWD/bin:$PATH
+#export PATH=$PWD/bin:$PATH
 
 nextflow workflows/cloudCellphy.nf -with-report report-nextflow-log.html -with-dag flowchart.html -with-timeline timeline.html -resume
