@@ -1,6 +1,8 @@
 # cloudCellphy
 
-Nextflow pipeline for massive-scale single-cell phylogenetics
+[![Docker Build](https://github.com/jzinno/cloudCellphy/actions/workflows/docker-build.yml/badge.svg)](https://github.com/jzinno/cloudCellphy/actions/workflows/docker-build.yml)
+
+### Nextflow pipeline for massive-scale single-cell phylogenetics
 
 The pipeline is currently configured to run on a SLURM cluster, but can be easily adapted to other schedulers.
 
