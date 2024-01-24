@@ -22,7 +22,7 @@ process MLSearchCellPhy {
         --search \
         --seed \$RANDOM \
         --msa ${phylo_vcf} \
-        --model GTGTR4+G+FO \
+        --model ${params.evo_model} \
         --msa-format VCF \
         --threads ${task.cpus} \
         --prefix ${phylo_vcf.simpleName}.CellPhy.${tree_search_idx} \
@@ -63,7 +63,7 @@ process BootstrapsCellPhy {
         --bootstrap \
         --seed \$RANDOM \
         --msa ${phylo_vcf} \
-        --model GTGTR4+G+FO \
+        --model ${params.evo_model} \
         --msa-format VCF \
         --threads ${task.cpus} \
         --prefix ${phylo_vcf.simpleName}.CellPhy.${bootstrap_search_idx} \
