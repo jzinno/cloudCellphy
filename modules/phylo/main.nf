@@ -69,7 +69,7 @@ process BootstrapsCellPhy {
         --threads ${task.cpus} \
         --prefix ${phylo_vcf.simpleName}.CellPhy.${bootstrap_search_idx} \
         --bs-trees ${params.bs_trees_per_job} \
-        --bs-metric tbe,fbp \
+        --bs-metric ${params.bs_metric} \
 
 
     """
