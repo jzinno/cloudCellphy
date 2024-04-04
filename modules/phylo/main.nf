@@ -24,6 +24,7 @@ process MLSearchCellPhy {
         --msa ${phylo_vcf} \
         --model ${params.evo_model} \
         --msa-format VCF \
+        --prob-msa ${params.prob_msa} \
         --threads ${task.cpus} \
         --prefix ${phylo_vcf.simpleName}.CellPhy.${tree_search_idx} \
         --tree ${params.start_tree_type}{1} \
