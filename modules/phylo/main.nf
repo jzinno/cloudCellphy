@@ -2,7 +2,6 @@ process MLSearchCellPhy {
     if ("${workflow.stubRun}" == "false") {
         memory params.tree_memory
         cpus params.tree_threads
-        queue 'pe2'
     }
     tag "tree-search"
 
@@ -45,7 +44,6 @@ process BootstrapsCellPhy {
     if ("${workflow.stubRun}" == "false") {
         memory params.tree_memory
         cpus params.tree_threads
-        queue 'pe2'
     }
     tag "tree-validation"
 
@@ -84,7 +82,6 @@ process SupportCellPhy {
     if ("${workflow.stubRun}" == "false") {
         memory '8 GB'
         cpus 4
-        queue 'pe2'
     }
     tag "tree-support"
 
