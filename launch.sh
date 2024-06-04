@@ -22,6 +22,4 @@ fi
 
 export NXF_TEMP=$PWD/nxf-scratch
 
-#export PATH=$PWD/bin:$PATH
-
-nextflow workflows/cloudCellphy.nf -with-report report-nextflow-log.html -with-dag flowchart.html -with-timeline timeline.html -resume
+nextflow workflows/cloudCellphy.nf -resume
