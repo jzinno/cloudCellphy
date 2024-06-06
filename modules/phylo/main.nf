@@ -27,6 +27,7 @@ process MLSearchCellPhy {
         --threads ${task.cpus} \
         --prefix ${phylo_vcf.simpleName}.CellPhy.${tree_search_idx} \
         --tree ${params.start_tree_type}{1} \
+        --lh-epsilon ${params.lh_epsilon} \
 
     loglikelihood=\$(grep "Final LogLikelihood" ${phylo_vcf.simpleName}.CellPhy.${tree_search_idx}.raxml.log | awk '{print \$3}')
     echo \$loglikelihood > loglikelihood.${tree_search_idx}.txt
