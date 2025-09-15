@@ -54,11 +54,11 @@ $$
 #### Bounded parallel execution time with P workers
 
 $$
-T_{P} \approx \frac{1}{P} \sum_{i=1}^{N} t_i \;+\; \text{tail effects}
+T_{P} \approx \frac{1}{P} \sum_{i=1}^{N} t_i + \text{tail effects}
 $$
 
 #### Fully parallel execution time (unlimited concurrency)
 
 $$
-T_{\text{parallel}} = \max_{1 \leq i \leq N} \, t_i
+T_{\text{parallel}} = \max_{\substack{i=1}}^{N} t_i
 $$
