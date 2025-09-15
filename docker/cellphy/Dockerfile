@@ -1,5 +1,4 @@
-# Use a smaller base image
-FROM ubuntu:latest
+FROM ubuntu:24.04
 
 # Set the working directory in the container
 WORKDIR /usr/src/app
@@ -8,28 +7,32 @@ WORKDIR /usr/src/app
 RUN apt-get update && apt-get install -y \
     flex \
     bison \
-    libgmp3-dev \
+    libgmp-dev \
     git \
     cmake \
     make \
     g++ \
+    pkg-config \
     liblzma-dev \
     libbz2-dev \
     zlib1g-dev \
+    libdeflate-dev \
+    libhtscodecs-dev \
     libhts-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Clone the RAxML-NG repository
+# Clone the RAxML-NG repository (cellphy branch)
 RUN git clone --branch cellphy --recursive https://github.com/amkozlov/raxml-ng.git
 
 # Build RAxML-NG
 WORKDIR /usr/src/app/raxml-ng/build
-RUN cmake -DHTSLIB_INCLUDE_DIR=/usr/include/htslib \
+RUN cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DHTSLIB_INCLUDE_DIR=/usr/include/htslib \
     -DHTSLIB_LIBRARY=/usr/lib/x86_64-linux-gnu/libhts.so \
-    -DHTSLIB_LZMA=/usr/lib/x86_64-linux-gnu/liblzma.so \
-    -DHTSLIB_BZ2=/usr/lib/x86_64-linux-gnu/libbz2.so \
+    -DHTSLIB_CODECS=/usr/lib/x86_64-linux-gnu/libhtscodecs.so \
     .. && \
-    make && \
+    make -j"$(nproc)" && \
     mv /usr/src/app/raxml-ng/bin/raxml-ng /usr/src/app/raxml-ng-cellphy-linux && \
     rm -rf /usr/src/app/raxml-ng
 
