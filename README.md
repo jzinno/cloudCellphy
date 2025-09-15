@@ -36,3 +36,29 @@ The `nextflow.config` file contains various parameters that control the behavior
 - **bs_metric**: Metrics for bootstrap analysis.
 - **tree_threads**: Number of threads for tree computation.
 - **tree_memory**: Memory allocated for tree computation.
+
+### Run Time
+
+$N$ is the number of maximum likelihood tree searches.
+
+$t_i$ is the time to compute the $i$-th maximum likelihood tree.
+
+$P$ is the number of workers.
+
+#### Sequential execution time
+
+$$
+T_{\text{serial}} = \sum_{i=1}^{N} t_i
+$$
+
+#### Bounded parallel execution time with P workers
+
+$$
+T_{P} \approx \frac{1}{P} \sum_{i=1}^{N} t_i \;+\; \text{tail effects}
+$$
+
+#### Fully parallel execution time (unlimited concurrency)
+
+$$
+T_{\text{parallel}} = \max_{1 \leq i \leq N} \, t_i
+$$
