@@ -9,12 +9,8 @@
 #SBATCH --output=cloudCellphy-log_%j.out
 
 
-module load anaconda3
-module load nextflow/22.10.4
-module load singularity/3.8.6
-
-eval "$(conda shell.bash hook)"
-conda deactivate
+module load singularity
+module load Nextflow/24.04.2
 
 if [ ! -d $PWD/nxf-scratch ]; then
     mkdir $PWD/nxf-scratch
