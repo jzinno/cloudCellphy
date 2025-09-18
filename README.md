@@ -62,3 +62,5 @@ $$
 $$
 T_{\text{parallel}} = \max_{\substack{i=1}}^{N} t_i
 $$
+
+![](assets/arch.png)
