@@ -28,7 +28,7 @@ process MLSearchCellPhy {
         --prefix ${phylo_vcf.simpleName}.CellPhy.${tree_search_idx} \
         --tree ${params.start_tree_type}{1} \
         --lh-epsilon ${params.lh_epsilon} \
-
+        --extra thread-pin
     loglikelihood=\$(grep "Final LogLikelihood" ${phylo_vcf.simpleName}.CellPhy.${tree_search_idx}.raxml.log | awk '{print \$3}')
     echo \$loglikelihood > loglikelihood.${tree_search_idx}.txt
 
@@ -69,7 +69,7 @@ process BootstrapsCellPhy {
         --prefix ${phylo_vcf.simpleName}.CellPhy.${bootstrap_search_idx} \
         --bs-trees ${params.bs_trees_per_job} \
         --bs-metric ${params.bs_metric} \
-
+        --extra thread-pin
 
     """
     stub:
